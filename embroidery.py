@@ -49,8 +49,21 @@ def draw_christmas_tree(blocks, border_color=1, fill_color=1):
     return matrix
 
 
-def draw_circle(radius):
+def draw_circle(radius, border_color=1, fill_color=1, background_color=0):
+    x = radius    # center of circle
+    width = 2 * radius + 1
     matrix = []
+    for i in range(width):
+        submatrix = []
+        for j in range(width):
+            hypotenuse = math.floor( ((i - x) ** 2 + (j - x) ** 2) ** 0.5 )
+            if hypotenuse == radius:
+                submatrix.append(border_color)
+            elif hypotenuse < radius:
+                submatrix.append(fill_color)
+            else:
+                submatrix.append(background_color)
+        matrix.append(submatrix)
     return matrix
 
 
