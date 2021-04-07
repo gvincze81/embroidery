@@ -27,8 +27,25 @@ def draw_triangle(height, border_color=1, fill_color=1):
     return matrix
 
 
-def draw_christmas_tree(blocks):
+def draw_christmas_tree(blocks, border_color=1, fill_color=1):
+    height = blocks * 3 # one block is 3 rows high
+    width = 3 + blocks * 2 # last row of each block is 2 cells longer than the previous one
+    
     matrix = []
+    base = (width - 1) // 2
+    for i in range(height):
+        quotient = i // 3
+        left_border = base + 2 * quotient
+        right_border = base - 2 * quotient
+        submatrix = []
+        for j in range(width):
+            if i + j == left_border or j - i == right_border:
+                submatrix.append(border_color)
+            elif left_border < i + j and j - i < right_border:
+                submatrix.append(fill_color)
+            else:
+                submatrix.append(0)
+        matrix.append(submatrix)
     return matrix
 
 
