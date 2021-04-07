@@ -11,8 +11,19 @@ def draw_rectangle(width, height, border_color=1, fill_color=1, border_width=1):
     return matrix
 
 
-def draw_triangle(height):
+def draw_triangle(height, border_color=1, fill_color=1):
+    width = (height - 1) * 2 + 1    # +1 is the top, -1 is the top row
     matrix = []
+    for i in range(height):
+        submatrix = []
+        for j in range(width):
+            if i == height - 1 or i + j == height - 1 or j - i == height - 1:
+                submatrix.append(border_color)
+            elif i + j < height - 1 or j - i > height - 1:
+                submatrix.append(0)
+            else:
+                submatrix.append(fill_color)
+        matrix.append(submatrix)
     return matrix
 
 
