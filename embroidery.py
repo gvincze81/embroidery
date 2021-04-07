@@ -1,5 +1,13 @@
-def draw_rectangle(width, height):
+def draw_rectangle(width, height, border_color=1, fill_color=1, border_width=1):
     matrix = []
+    for i in range(height):
+        submatrix = []
+        for j in range(width):
+            if border_width <= i < height - border_width and border_width <= j < width - border_width:
+                submatrix.append(fill_color)
+            else:
+                submatrix.append(border_color)
+        matrix.append(submatrix)
     return matrix
 
 
