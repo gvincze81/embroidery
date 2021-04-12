@@ -39,7 +39,7 @@ def draw_christmas_tree(blocks, border_color=1, fill_color=1):
         right_border = base - 2 * quotient
         submatrix = []
         for j in range(width):
-            if i + j == left_border or j - i == right_border:
+            if i + j == left_border or j - i == right_border or i == height - 1:
                 submatrix.append(border_color)
             elif left_border < i + j and j - i < right_border:
                 submatrix.append(fill_color)
